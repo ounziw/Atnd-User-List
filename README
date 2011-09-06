@@ -1,0 +1,21 @@
+# Atnd User List
+
+Version: 1.0
+
+Author: [Fumito Mizuno](http://twitter.com/ounziw)
+
+This addon is based on Concrete5. This addon shows attendees of an event, using an ATND API (http://api.atnd.org/). 
+
+##Installation
+
+Copy the addon in a folder named 'atnd_user_list' in blocks.
+
+##Usage
+
+Activate this addon on your dashboard. Add this block anywhere you want. Enter the id of the ATND event you like.
+
+##License
+GPL v2.
+
+## Change Log
+1.0 New Release
