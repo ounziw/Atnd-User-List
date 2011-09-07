@@ -350,7 +350,11 @@ Public License instead of this License.
 		protected $btTable = 'btAtndUserList';
 		protected $btInterfaceWidth = "350";
 		protected $btInterfaceHeight = "300";
-		
+		protected $btCacheBlockRecord = true;
+		protected $btCacheBlockOutput = true;
+		protected $btCacheBlockOutputOnPost = true;
+		protected $btCacheBlockOutputForRegisteredUsers = true;
+		protected $btCacheBlockOutputLifetime = 300;		
 		
 	}
 	

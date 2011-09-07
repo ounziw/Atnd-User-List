@@ -1,9 +1,9 @@
 <?php
-    defined('C5_EXECUTE') or die("Access Denied.");
-    if (is_numeric($atndid) && $atndid > 0) {
-        $atndurl = 'http://api.atnd.org/events/users/?event_id=' . (int)$atndid;
-        $atnddata = @file_get_contents($atndurl);
-    } else {
+defined('C5_EXECUTE') or die("Access Denied.");
+if (is_numeric($atndid) && $atndid > 0) {
+    $atndurl = 'http://api.atnd.org/events/users/?event_id=' . (int)$atndid;
+    $atnddata = @file_get_contents($atndurl);
+} else {
     /**
      * sampledata 
      * http://api.atnd.org/#events-url
@@ -36,48 +36,48 @@
   </events>
 </hash>
 EOF;
-    } // if (is_numeric($atndid))
+} // if (is_numeric($atndid))
 
- 
-    /**
-     * XML file
-     */
-    try {
+
+/**
+ * XML file
+ */
+try {
     $xmldata = new DOMDocument();
     $xmldata->loadXml($atnddata);
-    } catch (DOMException $e) {
-        echo '捕捉した例外: ' . $e->getMessage();
-    }
+} catch (DOMException $e) {
+    echo '捕捉した例外: ' . $e->getMessage();
+}
 
 
-    /**
-     * XSL file
-     */
-    $xsl = $b->getBlockPath() . '/view.xsl';
-    try {
+/**
+ * XSL file
+ */
+$xsl = $b->getBlockPath() . '/view.xsl';
+try {
     $xsldata = new DOMDocument();
     $xsldata->load($xsl);
-    } catch (DOMException $e) {
-        echo '捕捉した例外: ' . $e->getMessage();
-    }
+} catch (DOMException $e) {
+    echo '捕捉した例外: ' . $e->getMessage();
+}
 
-    /**
-     *  create XSLT processor object
-     */
-    $processor = new xsltprocessor();
-    $processor->importStyleSheet($xsldata);
+/**
+ *  create XSLT processor object
+ */
+$processor = new xsltprocessor();
+$processor->importStyleSheet($xsldata);
 
-    /**
-     * Convert format
-     */
-    try {
-        $output = $processor->transformToXML($xmldata);
-    } catch (DOMException $e) {
-        echo '捕捉した例外: ' . $e;
-    }
+/**
+ * Convert format
+ */
+try {
+    $output = $processor->transformToXML($xmldata);
+} catch (DOMException $e) {
+    echo '捕捉した例外: ' . $e;
+}
 
-    /**
-     * Result
-     */
-    echo $output;
+/**
+ * Result
+ */
+echo $output;
 ?>
